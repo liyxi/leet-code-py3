@@ -23,6 +23,18 @@ Note:
     overflows.
 """
 
+"""
+Note: if you use int64 to mock int32, then you should pay special attention to:
+ Input      -> Output       # Comment
+ 7463847412 -> 2147483647   # just fine
+ 8463847412 -> 0            # overflow
+-8463847412 -> -2147483648  # just fine
+-9463847412 -> 0            # overflow
+
+if you use int32, then the number large (or small, for negative number) enough
+to cause overflow will overflow at input
+"""
+
 INT_MAX = (1<<31)-1
 INT_MIN = -(1<<31)
 
@@ -39,6 +51,8 @@ class Solution:
         while x != 0:
             # pop last digit from x
             pop = abs(x) % 10
+            if negative:
+                pop = -pop
             # remove last digit of x
             x = int(x/10)
             # whether y will overflow
@@ -48,6 +62,4 @@ class Solution:
                 return 0
             # push last digit to y
             y = y * 10 + pop
-        if negative:
-            y = -y
         return y
