@@ -26,19 +26,28 @@ Note:
 INT_MAX = (1<<31)-1
 INT_MIN = -(1<<31)
 
+INT_MAX_DIV_10 = int(INT_MAX / 10)
+INT_MIN_DIV_10 = int(INT_MIN / 10)
+
 class Solution:
     
     def reverse(self, x: int) -> int:
-        minus = x < 0
-        x = abs(x)
+        # is x negative
+        negative = x < 0
+        # save reversed integer in y
         y = 0
         while x != 0:
-            y *= 10
-            y += x % 10
-            x //= 10
-        if minus:
+            # pop last digit from x
+            pop = abs(x) % 10
+            # remove last digit of x
+            x = int(x/10)
+            # whether y will overflow
+            if y > INT_MAX_DIV_10 or (y==INT_MAX_DIV_10 and pop > 7):
+                return 0
+            if y < INT_MIN_DIV_10 or (y==INT_MIN_DIV_10 and pop < -8):
+                return 0
+            # push last digit to y
+            y = y * 10 + pop
+        if negative:
             y = -y
-        # TODO: need a better method to identify overflow
-        if y > INT_MAX or y < INT_MIN:
-            return 0
         return y
