@@ -24,15 +24,10 @@ Note:
 """
 
 """
-Note: if you use int64 to mock int32, then you should pay special attention to:
+Note:
  Input      -> Output       # Comment
- 7463847412 -> 2147483647   # just fine
- 8463847412 -> 0            # overflow
--8463847412 -> -2147483648  # just fine
--9463847412 -> 0            # overflow
-
-if you use int32, then the number large (or small, for negative number) enough
-to cause overflow will overflow at input
+ 1563847412 -> 0            # overflow
+-1563847412 -> 0            # overflow
 """
 
 INT_MAX = (1<<31)-1
