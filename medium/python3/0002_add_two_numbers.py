@@ -34,7 +34,7 @@ class Solution:
             p.next = ListNode(z-r*10)
             p = p.next
             z = r
-            l1 = l1.next if l1 else None 
+            l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
         if r != 0:
             p.next = ListNode(r)

@@ -20,7 +20,7 @@ class Solution:
         d = {}
         for k, v in enumerate(nums):
             d[v] = k
-            
+
         for i, x in enumerate(nums):
             cand = target - x
             j = d.get(cand)

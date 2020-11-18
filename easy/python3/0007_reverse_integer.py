@@ -37,7 +37,7 @@ INT_MAX_DIV_10 = int(INT_MAX / 10)
 INT_MIN_DIV_10 = int(INT_MIN / 10)
 
 class Solution:
-    
+
     def reverse(self, x: int) -> int:
         # is x negative
         negative = x < 0

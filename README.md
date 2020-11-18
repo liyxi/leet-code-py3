@@ -1,3 +1,3 @@
-# leet-code-py3
+# Leetcode Solutions
 
-python 3 solutions for leet code problems
+C, Cpp, and Python3 Leetcode solutions.
